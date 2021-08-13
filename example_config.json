@@ -1,0 +1,74 @@
+{
+  "token": "",
+  "prefix": "하룬아 ",
+  "owners": [],
+  "guild": "",
+  "entry": "",
+  "auth": {
+    "roleID": "",
+    "notifyID": ""
+  },
+  "blind": {
+    "ignoreRole": "",
+    "addRole": ""
+  },
+  "selects": [
+    {
+      "label": "🥇 프로그래밍 마스터",
+      "description": "프로그래밍을 마스터하셨나보네요!",
+      "value": "interests_First"
+    },
+    {
+      "label": "🥈 프로그래밍 고수",
+      "description": "프로그래밍 잘하시네요!",
+      "value": "interests_Second"
+    },
+    {
+      "label": "🥉 프로그래밍 중수",
+      "description": "프로그래밍을 이해하셨네요!",
+      "value": "interests_Thrid"
+    },
+    {
+      "label": "🏅 프로그래밍 초보",
+      "description": "응애 나 초보 개발자",
+      "value": "interests_IDK"
+    }
+  ],
+  "selectsRole": {
+    "interests_First": "",
+    "interests_Second": "",
+    "interests_Thrid": "",
+    "interests_IDK": ""
+  },
+  "intents": [
+    "GUILDS",
+    "GUILD_MEMBERS",
+    "GUILD_BANS",
+    "GUILD_INTEGRATIONS",
+    "GUILD_WEBHOOKS",
+    "GUILD_INVITES",
+    "GUILD_VOICE_STATES",
+    "GUILD_PRESENCES",
+    "GUILD_MESSAGES",
+    "GUILD_MESSAGE_REACTIONS",
+    "GUILD_MESSAGE_TYPING",
+    "DIRECT_MESSAGES",
+    "DIRECT_MESSAGE_REACTIONS",
+    "DIRECT_MESSAGE_TYPING"
+  ],
+  "colors": {
+    "info": "green",
+    "warn": "yellow",
+    "error": "red",
+    "data": "grey"
+  },
+  "database": {
+    "client": "mysql",
+    "connection": {
+      "host": "",
+      "user": "",
+      "password": "",
+      "database": ""
+    }
+  }
+}
