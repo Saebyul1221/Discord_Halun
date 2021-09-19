@@ -38,3 +38,10 @@ CREATE TABLE `entry` (
     `join` VARCHAR(255) NOT NULL DEFAULT "{user} 님께서 {guild} 에 오셨습니다. 환영해요! 현재 인원 수: **{count}**명",
     `quit` VARCHAR(255) NOT NULL DEFAULT "{user} 님께서 퇴장하셨습니다.. 현재 인원 수: **{count}**명"
 );
+
+DROP TABLE IF EXISTS `warn`;
+CREATE TABLE `warn` (
+    `userID` VARCHAR(255) NOT NULL PRIMARY KEY,
+    `count` INT NOT NULL DEFAULT 0,
+    `reason` VARCHAR(255) NOT NULL DEFAULT "[]"
+);
