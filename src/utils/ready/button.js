@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 const { info, error } = new (require("../output"))()
 
 module.exports = async function button(client) {
-  const authentication = (await this.client.knex("authentication"))[0]
+  const authentication = (await client.knex("authentication"))[0]
   const channel = client.channels.cache.get(authentication.channel)
   const messageID = authentication.messageID
   channel.messages
@@ -27,7 +27,7 @@ module.exports = async function button(client) {
           components: [buttons],
         })
         .then(async (msg) => {
-          await this.client.knex("authentication").update({ messageID: msg.id })
+          await client.knex("authentication").update({ messageID: msg.id })
         })
     })
 }
