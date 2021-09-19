@@ -1,8 +1,8 @@
 const Discord = require("discord.js")
 const { info, error } = new (require("../output"))()
 
-module.exports = async function select(client, knex, config) {
-  const getRole = (await knex("getrole"))[0]
+module.exports = async function select(client, config) {
+  const getRole = (await this.client.knex("getrole"))[0]
   const gChannel = client.channels.cache.get(getRole.channel)
   const gMessageID = getRole.messageID
   gChannel.messages
@@ -28,7 +28,7 @@ module.exports = async function select(client, knex, config) {
           components: [selects],
         })
         .then(async (msg) => {
-          await knex("getrole").update({ messageID: msg.id })
+          await this.client.knex("getrole").update({ messageID: msg.id })
         })
     })
 }
