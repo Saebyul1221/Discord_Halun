@@ -16,7 +16,7 @@ module.exports = class extends Command {
     const commands = ["지급", "차감", "확인"]
     if (!commands.includes(args[0]))
       return message.reply({
-        content: "`하룬아 경고 < 지급 / 차감 / 확인 > < 대상 >` 이 올바른 명령어에요.",
+        content: "`하룬아 경고 < 지급 / 차감 / 확인 > < 대상 > [ 사유 ]` 이 올바른 명령어에요.",
       })
     if (args[0] === commands[0]) {
       if (args[1] !== undefined) {
