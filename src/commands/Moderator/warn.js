@@ -113,7 +113,7 @@ module.exports = class extends Command {
   }
 
   async removeWarn(member, data, caseNum) {
-    if (!data.length > 0) return false
+    if (!data.length > 0 || data[0].count === 0) return false
     const reasonArr = JSON.parse(data[0].reason)
     const count = data[0].count
     if (!caseNum) caseNum = count
