@@ -35,8 +35,7 @@ module.exports = class HalunClient extends Client {
     this.prefix = options.prefix
 
     if (!options.owners) error("봇 오너가 누락됬어요!")
-    if (!Array.isArray(options.owners))
-      error("봇 오너의 타입은 반드시 배열 이여야해요!")
+    if (!Array.isArray(options.owners)) error("봇 오너의 타입은 반드시 배열 이여야해요!")
     this.owners = options.owners
     this.guildID = "861455901926883389"
   }

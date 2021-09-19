@@ -7,9 +7,7 @@ module.exports = class Command {
     this.aliases = options.aliases || []
     this.description = options.description || "설명이 없어요!"
     this.category = options.category || "기타"
-    this.usage = `${this.client.prefix}${this.name} ${
-      options.usage || ""
-    }`.trim()
+    this.usage = `${this.client.prefix}${this.name} ${options.usage || ""}`.trim()
   }
 
   // eslint-disable-next-line no-unused-vars

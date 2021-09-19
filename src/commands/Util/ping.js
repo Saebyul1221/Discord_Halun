@@ -15,9 +15,7 @@ module.exports = class extends Command {
     const latency = msg.createdTimestamp - message.createdTimestamp
 
     msg.edit(
-      `봇 지연시간: \`${latency}ms\`, API 지연시간: \`${Math.round(
-        this.client.ws.ping
-      )}ms\``
+      `봇 지연시간: \`${latency}ms\`, API 지연시간: \`${Math.round(this.client.ws.ping)}ms\``
     )
   }
 }

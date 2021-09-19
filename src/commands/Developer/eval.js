@@ -13,8 +13,7 @@ module.exports = class extends Command {
 
   async run(message, args, embed) {
     if (this.client.owners.some((oid) => message.author.id.includes(oid))) {
-      if (args.length < 1)
-        return message.reply("`하룬아 실행 < 코드 >` 가 올바른 명령어에요.")
+      if (args.length < 1) return message.reply("`하룬아 실행 < 코드 >` 가 올바른 명령어에요.")
       const text = args.join(" ")
 
       if (text.indexOf("exit") != -1 && text.indexOf("process") != -1) {
@@ -35,11 +34,7 @@ module.exports = class extends Command {
                 output = output.replace(this.client.token, "토큰")
               if (output.length > 1010) output = output.slice(0, 1010) + "\n..."
               embed.setDescription(
-                "입력 :\n```js\n" +
-                  text +
-                  "\n```\n출력 :```js\n" +
-                  output +
-                  "\n```"
+                "입력 :\n```js\n" + text + "\n```\n출력 :```js\n" + output + "\n```"
               )
               message.reply({ embeds: [embed] })
             })

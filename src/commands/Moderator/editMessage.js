@@ -15,9 +15,7 @@ module.exports = class extends Command {
 
     if (this.owners.some((ownerID) => message.author.id.includes(ownerID))) {
       if (args.length < 1)
-        return message.reply(
-          "`하룬아 메시지수정 < 메시지 >` 가 올바른 명령어에요."
-        )
+        return message.reply("`하룬아 메시지수정 < 메시지 >` 가 올바른 명령어에요.")
       const channelID = authentication.channel
       const messageID = authentication.messageID
       const text = args.join(" ")

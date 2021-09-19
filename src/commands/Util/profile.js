@@ -12,16 +12,11 @@ module.exports = class extends Command {
 
   checkUser(message, user) {
     const searchById = this.client.users.cache.get(user)
-    const searchByName = message.guild.members.cache.find(
-      (u) => u.displayName === user[0]
-    )
+    const searchByName = message.guild.members.cache.find((u) => u.displayName === user[0])
 
     console.log(searchByName)
 
-    if (
-      user.length === 0 ||
-      (searchById === undefined && searchByName === undefined)
-    )
+    if (user.length === 0 || (searchById === undefined && searchByName === undefined))
       return message.user
 
     if (searchById === undefined) return searchByName.user

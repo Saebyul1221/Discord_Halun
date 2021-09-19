@@ -15,15 +15,9 @@ module.exports = class extends Command {
   async run(message, [command]) {
     const embed = new MessageEmbed()
       .setColor("BLUE")
-      .setAuthor(
-        "하룬의 도움말 메뉴!",
-        message.guild.iconURL({ dynamic: true })
-      )
+      .setAuthor("하룬의 도움말 메뉴!", message.guild.iconURL({ dynamic: true }))
       .setThumbnail(this.client.user.displayAvatarURL())
-      .setFooter(
-        message.author.username,
-        message.author.displayAvatarURL({ dynamic: true })
-      )
+      .setFooter(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
       .setTimestamp()
 
     if (command) {
@@ -59,9 +53,7 @@ module.exports = class extends Command {
       if (!this.client.owners.includes(message.author.id)) {
         categories = this.client.utils.removeDuplicates(
           this.client.commands
-            .filter(
-              (cmd) => cmd.category !== "개발자" && cmd.category !== "관리자"
-            )
+            .filter((cmd) => cmd.category !== "개발자" && cmd.category !== "관리자")
             .map((cmd) => cmd.category)
         )
       } else {
