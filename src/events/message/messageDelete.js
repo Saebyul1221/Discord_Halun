@@ -3,8 +3,8 @@ const Discord = require("discord.js")
 const { error, info } = new (require("../../utils/output"))()
 
 module.exports = class extends Event {
-  async run(message, knex) {
-    const authentication = (await knex("authentication"))[0]
+  async run(message) {
+    const authentication = (await this.client.knex("authentication"))[0]
     if (message.id === authentication.messageID) {
       const channel = message.client.channels.cache.get(authentication.channel)
       error("The authentication message has been removed.")
@@ -23,7 +23,7 @@ module.exports = class extends Event {
           components: [buttons],
         })
         .then(async (msg) => {
-          await knex("authentication").update({ messageID: msg.id })
+          await this.client.knex("authentication").update({ messageID: msg.id })
         })
     }
   }

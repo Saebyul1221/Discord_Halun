@@ -10,8 +10,8 @@ module.exports = class extends Command {
     })
   }
 
-  async run(message, args, embed, knex) {
-    const authentication = (await knex("authentication"))[0]
+  async run(message, args, embed) {
+    const authentication = (await this.client.knex("authentication"))[0]
 
     if (this.owners.some((ownerID) => message.author.id.includes(ownerID))) {
       if (args.length < 1)

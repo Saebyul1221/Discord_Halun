@@ -10,13 +10,13 @@ module.exports = class extends Command {
     })
   }
 
-  async run(message, args, embed, knex) {
+  async run(message, args) {
     if (this.owners.some((oid) => message.author.id.includes(oid))) {
       if (args.length < 1)
         return message.reply(
           "`하룬아 입장메시지 < 메시지 >` 가 올바른 명령어에요."
         )
-      await knex("entry").update({ join: args.join(" ") })
+      await this.client.knex("entry").update({ join: args.join(" ") })
       message.reply("완료되었습니다!")
     }
   }

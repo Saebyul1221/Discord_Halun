@@ -1,7 +1,4 @@
 const Event = require("../../structures/Event")
-const config = require("../../../config.json")
-const knex = require("knex")(config.database)
-
 module.exports = class extends Event {
   async run(message) {
     const mentionRegex = RegExp(`^<@!${this.client.user.id}>$`)
@@ -25,7 +22,7 @@ module.exports = class extends Event {
 
     const embed = require("../../utils/embed")(message)
     if (command) {
-      command.run(message, args, embed, knex)
+      command.run(message, args, embed)
     }
   }
 }

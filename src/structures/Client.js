@@ -2,14 +2,15 @@ const { Client, Collection, Intents } = require("discord.js")
 const Util = require("./Util.js")
 const { error } = new (require("../utils/output"))()
 const config = require("../../config.json")
-const its = new Intents()
-its.add(config.intents)
+const knex = require("knex")(config.database)
+const AllOfIntents = new Intents()
+AllOfIntents.add(config.intents)
 
 module.exports = class HalunClient extends Client {
   constructor(options = {}) {
     super({
       disableMentions: ["everyone"],
-      intents: its,
+      intents: AllOfIntents,
       allowedMentions: {
         repliedUser: false,
       },
@@ -20,6 +21,7 @@ module.exports = class HalunClient extends Client {
     this.aliases = new Collection()
     this.events = new Collection()
     this.utils = new Util(this)
+    this.knex = knex
   }
 
   validate(options) {

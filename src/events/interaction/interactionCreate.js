@@ -3,21 +3,20 @@ const config = require("../../../config.json")
 const { error, info } = new (require("../../utils/output"))()
 const Discord = require("discord.js")
 
-const Buttons = new Discord.MessageActionRow().addComponents(
-  new Discord.MessageButton()
-    .setCustomId(`APPLY_BLIND_DISABLED`)
-    .setLabel("승인하기")
-    .setStyle("PRIMARY")
-    .setDisabled(true),
-  new Discord.MessageButton()
-    .setCustomId(`DENY_BLIND_DISABLED`)
-    .setLabel("거절하기(차단)")
-    .setStyle("DANGER")
-    .setDisabled(true)
-)
-
 module.exports = class extends Event {
-  async run(interaction, knex) {
+  async run(interaction) {
+    const Buttons = new Discord.MessageActionRow().addComponents(
+      new Discord.MessageButton()
+        .setCustomId(`APPLY_BLIND_DISABLED`)
+        .setLabel("승인하기")
+        .setStyle("PRIMARY")
+        .setDisabled(true),
+      new Discord.MessageButton()
+        .setCustomId(`DENY_BLIND_DISABLED`)
+        .setLabel("거절하기(차단)")
+        .setStyle("DANGER")
+        .setDisabled(true)
+    )
     if (interaction.customId === "AUTHENTICATION") {
       interaction.member.guild.members
         .fetch(interaction.user.id)
@@ -35,7 +34,7 @@ module.exports = class extends Event {
               `I cannot grant roles to ${member.displayName}(${member.id}) users. Error content: \n${err}`
             )
           })
-          await knex("authenticationlogs").insert({
+          await this.client.knex("authenticationlogs").insert({
             userID: interaction.user.id,
           })
           info("SUCCESS", `Add role. (User: ${interaction.user.id})`)
