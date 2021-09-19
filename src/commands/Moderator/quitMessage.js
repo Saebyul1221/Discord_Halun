@@ -6,7 +6,7 @@ module.exports = class extends Command {
       name: "입장메시지",
       aliases: ["입장메세지", "입장메시지"],
       description: "유저 입장 메시지를 변경해요.",
-      category: "개발자",
+      category: "관리자",
     })
   }
 

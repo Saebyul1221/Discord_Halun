@@ -6,7 +6,7 @@ module.exports = class extends Command {
       name: "메시지수정",
       aliases: ["메시지수정", "메세지수정", "메세지바꿔", "메시지바꿔"],
       description: "인증 메시지의 내용을 변경해요.",
-      category: "개발자",
+      category: "관리자",
     })
   }
 
