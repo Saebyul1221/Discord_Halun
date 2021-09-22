@@ -53,7 +53,7 @@ module.exports = class extends Event {
         const role = interaction.member.guild.roles.cache.get(
           config.selectsRole[interaction.values[0]]
         )
-        member.roles.add(role)
+        if (role) member.roles.add(role)
         interaction.reply({
           content: "역할이 적용되었습니다!",
           ephemeral: true,
