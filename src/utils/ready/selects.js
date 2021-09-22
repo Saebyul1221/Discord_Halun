@@ -21,11 +21,17 @@ module.exports = async function select(client, config) {
           .setMaxValues(1)
           .addOptions(config.selects)
       )
+      const buttons = new Discord.MessageActionRow().addComponents(
+        new Discord.MessageButton()
+          .setCustomId("ROLE_DELETE")
+          .setLabel("프로그래밍 역할 제거하기")
+          .setStyle("DANGER")
+      )
       info("CREATE", "The role message is being generated.")
       gChannel
         .send({
           content: "역할을 선택하시고 싶으시다면 아래 메뉴를 확인해주세요!",
-          components: [selects],
+          components: [selects, buttons],
         })
         .then(async (msg) => {
           await client.knex("getrole").update({ messageID: msg.id })

@@ -60,6 +60,19 @@ module.exports = class extends Event {
         })
       })
     }
+    if (interaction.customId === "ROLE_DELETE") {
+      interaction.member.guild.members.fetch(interaction.user.id).then(async (member) => {
+        for (const role in config.selectsRole) {
+          const hasRole = member.roles.cache.find((r) => r.id === config.selectsRole[role])
+          const _role = interaction.member.guild.roles.cache.get(config.selectsRole[role])
+          if (hasRole) member.roles.remove(_role)
+        }
+        interaction.reply({
+          content: "역할이 초기화 되었습니다.",
+          ephemeral: true,
+        })
+      })
+    }
     if (interaction.customId.startsWith("APPLY_BLIND")) {
       const cid = interaction.customId
       interaction.member.guild.members
