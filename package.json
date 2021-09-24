@@ -11,6 +11,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "discord.js": "^13.0.1",
+    "fs": "^0.0.1-security",
     "glob": "^7.1.6",
     "knex": "^0.21.21",
     "mysql": "^2.18.1",
