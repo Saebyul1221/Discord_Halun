@@ -9,9 +9,9 @@ AllOfIntents.add(config.intents)
 module.exports = class HalunClient extends Client {
   constructor(options = {}) {
     super({
-      disableMentions: ["everyone"],
       intents: AllOfIntents,
       allowedMentions: {
+        parse: ["everyone", "users", "roles"],
         repliedUser: false,
       },
     })
