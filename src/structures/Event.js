@@ -1,4 +1,5 @@
 const { error } = new (require("../utils/output"))()
+const config = require("../../config.json")
 
 module.exports = class Event {
   constructor(client, name, options = {}) {
@@ -6,9 +7,9 @@ module.exports = class Event {
     this.client = client
     this.type = options.once ? "once" : "on"
     this.emitter =
-      (typeof options.emitter === "string"
-        ? this.client[options.emitter]
-        : options.emitter) || this.client
+      (typeof options.emitter === "string" ? this.client[options.emitter] : options.emitter) ||
+      this.client
+    this.config = config
   }
 
   // eslint-disable-next-line no-unused-vars
