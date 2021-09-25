@@ -6,6 +6,7 @@ module.exports = class extends Event {
     const DokdoHandler = new Dokdo(this.client, {
       aliases: ["dokdo", "dok"],
       prefix: this.config.prefix,
+      owners: this.config.owners,
     })
     DokdoHandler.run(message)
     const mentionRegex = RegExp(`^<@!${this.client.user.id}>$`)
