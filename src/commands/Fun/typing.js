@@ -39,8 +39,10 @@ module.exports = class extends Command {
             text.channel
               .awaitMessages({ filter, max: 1, time: 60000, erros: ["time"] })
               .then((collected) => {
-                if (collected.first().content !== config.sentence[fileName])
+                if (collected.first().content !== config.sentence[fileName]) {
+                  isStarted = false
                   return message.reply({ content: "오탈자가 존재합니다. 타자 측정을 종료합니다." })
+                }
                 const ended_at = new Date().getTime() - 4001
                 const result = calc.xStart(config.sentence[fileName], started_at, ended_at)
                 message.channel.send({
