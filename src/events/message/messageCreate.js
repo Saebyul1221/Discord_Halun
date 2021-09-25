@@ -1,6 +1,13 @@
 const Event = require("../../structures/Event")
+const Dokdo = require("dokdo")
+
 module.exports = class extends Event {
   async run(message) {
+    const DokdoHandler = new Dokdo(this.client, {
+      aliases: ["dokdo", "dok"],
+      prefix: this.config.prefix,
+    })
+    DokdoHandler.run(message)
     const mentionRegex = RegExp(`^<@!${this.client.user.id}>$`)
     if (!message.guild || message.author.bot) return
 
