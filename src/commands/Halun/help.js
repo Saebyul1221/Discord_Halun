@@ -9,6 +9,8 @@ module.exports = class extends Command {
       description: "사용할 수 있는 명령어를 보여드려요.",
       category: "유틸리티",
       usage: "[커맨드]",
+      fullCommand: `하룬아 도움 < 명령어 >`,
+      isPossibleToSkip: true,
     })
   }
 

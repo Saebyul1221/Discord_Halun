@@ -8,12 +8,12 @@ module.exports = class extends Command {
       description: "사용할 수 있는 명령어를 보여드려요.",
       category: "개발자",
       usage: "[커맨드]",
+      fullCommand: `하룬아 실행 < 코드 >`,
       devOnly: true,
     })
   }
 
   async run(message, args, embed) {
-    if (args.length < 1) return message.reply("`하룬아 실행 < 코드 >` 가 올바른 명령어에요.")
     const text = args.join(" ")
 
     if (text.indexOf("exit") != -1 && text.indexOf("process") != -1) {
