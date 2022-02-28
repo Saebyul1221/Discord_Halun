@@ -14,7 +14,7 @@ process.on("uncaughtException", (error) => {
       message.channel.send({ embeds: [embed] })
       break
     default:
-      sendToLog.error(error.message)
+      sendToLog.error(error.stack)
       break
   }
 })
