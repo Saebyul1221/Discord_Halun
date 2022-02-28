@@ -1,5 +1,5 @@
 const Event = require("../structures/Event")
-const { info, data } = new (require("../utils/output"))()
+const { info, data } = new (require("../utils/sendToLog"))()
 const readyHandler = require("../utils/ready")
 const config = require("../../config.json")
 

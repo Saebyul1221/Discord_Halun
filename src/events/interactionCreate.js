@@ -1,6 +1,6 @@
-const Event = require("../../structures/Event")
-const config = require("../../../config.json")
-const { error, info } = new (require("../../utils/output"))()
+const Event = require("../structures/Event")
+const config = require("../../config.json")
+const { error, info } = new (require("../utils/sendToLog"))()
 const Discord = require("discord.js")
 
 module.exports = class extends Event {
@@ -27,13 +27,13 @@ module.exports = class extends Event {
           })
         member.roles.add(config.auth.roleID).catch((err) => {
           error(
-            `I cannot grant roles to ${member.displayName}(${member.id}) users. Error content: \n${err}`
+            `${member.displayName}(${member.id}) 유저에게 역할을 주지 못했습니다.\n에러 내용:\n${err}`
           )
         })
         await this.client.knex("authenticationlogs").insert({
           userID: interaction.user.id,
         })
-        info("SUCCESS", `Add role. (User: ${interaction.user.id})`)
+        info("SUCCESS", `유저에게 역할을 지급하였습니다. (유저: ${interaction.user.id})`)
         interaction.reply({
           content: "인증이 완료되었습니다.",
           ephemeral: true,
@@ -95,7 +95,7 @@ module.exports = class extends Event {
       interaction.member.guild.members
         .fetch(cid.split("_").slice(-1)[0])
         .then(async (member) => {
-          member.ban({ reason: "부적절한 닉네임" })
+          member.ban({ reason: `부적절한 닉네임 [당시 닉네임: ${member.displayName}]` })
         })
         .catch(() => false)
       interaction.reply({

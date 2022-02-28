@@ -31,7 +31,7 @@ module.exports = class extends Command {
           : this.checkUser(message, args)
         : message.author
     embed.setImage(user.displayAvatarURL({ size: 2048, dynamic: true }))
-    embed.setFooter(user.username + "님의 프로필!")
+    embed.setFooter({ text: user.username + "님의 프로필!" })
     message.reply({ embeds: [embed] })
   }
 }

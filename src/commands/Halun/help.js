@@ -9,15 +9,20 @@ module.exports = class extends Command {
       description: "사용할 수 있는 명령어를 보여드려요.",
       category: "유틸리티",
       usage: "[커맨드]",
+      fullCommand: `하룬아 도움 < 명령어 >`,
+      isPossibleToSkip: true,
     })
   }
 
   async run(message, [command]) {
     const embed = new MessageEmbed()
       .setColor("BLUE")
-      .setAuthor("하룬의 도움말 메뉴!", message.guild.iconURL({ dynamic: true }))
+      .setAuthor({ name: "하룬의 도움말 메뉴!", iconURL: message.guild.iconURL({ dynamic: true }) })
       .setThumbnail(this.client.user.displayAvatarURL())
-      .setFooter(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
+      .setFooter({
+        text: message.author.username,
+        iconURL: message.author.displayAvatarURL({ dynamic: true }),
+      })
       .setTimestamp()
 
     if (command) {
@@ -27,7 +32,7 @@ module.exports = class extends Command {
 
       if (!cmd) return message.reply("알 수 없는 명령어에요..")
 
-      embed.setAuthor(`${cmd.name} 도움말`, this.client.user.displayAvatarURL())
+      embed.setAuthor({ name: `${cmd.name} 도움말`, iconURL: this.client.user.displayAvatarURL() })
       embed.setDescription(
         [
           `**❯ 별칭:** ${

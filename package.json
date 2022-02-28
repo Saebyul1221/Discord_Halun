@@ -1,22 +1,35 @@
 {
   "name": "halun",
-  "version": "0.0.1",
-  "main": "src/index",
-  "author": "WhiteKJ",
+  "version": "1.0",
+  "description": "Personal Bot",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saebyul1221/Halun.git"
+  },
+  "author": "Saebyul",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Saebyul1221/Halun/issues"
+  },
+  "homepage": "https://github.com/Saebyul1221/Halun#readme",
   "devDependencies": {
-    "eslint": "^7.0.0",
-    "eslint-config-tesseract": "^0.0.2"
+    "eslint": "^8.10.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1"
   },
   "dependencies": {
     "colors": "^1.4.0",
-    "discord.js": "^13.0.1",
-    "dokdo": "^0.5.0",
+    "discord.js": "^13.6.0",
     "fs": "^0.0.1-security",
-    "glob": "^7.1.6",
-    "knex": "^0.21.21",
+    "glob": "^7.2.0",
+    "knex": "^1.0.3",
     "mysql": "^2.18.1",
     "path": "^0.12.7",
-    "util": "^0.12.3"
+    "util": "^0.12.4"
   }
 }

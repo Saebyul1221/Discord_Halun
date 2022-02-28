@@ -1,4 +1,4 @@
-const { error } = new (require("../utils/output"))()
+const { error } = new (require("../utils/sendToLog"))()
 const config = require("../../config.json")
 
 module.exports = class Command {
@@ -10,6 +10,10 @@ module.exports = class Command {
     this.category = options.category || "기타"
     this.usage = `${this.client.prefix}${this.name} ${options.usage || ""}`.trim()
     this.config = config
+    this.fullCommand = options.fullCommand || undefined
+    this.devOnly = options.devOnly || false
+    this.isPossibleToSkip = options.isPossibleToSkip || false
+    this.permission = options.permission || []
   }
 
   // eslint-disable-next-line no-unused-vars

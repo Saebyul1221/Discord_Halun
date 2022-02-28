@@ -1,6 +1,6 @@
-const Event = require("../../structures/Event")
-const { error } = new (require("../../utils/output"))()
-const badwords = require("../../../badwords.json")
+const Event = require("../structures/Event")
+const { error } = new (require("../utils/sendToLog"))()
+const badwords = require("../../badwords.json")
 
 module.exports = class extends Event {
   async run(member, knex) {

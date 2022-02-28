@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const { info, error } = new (require("../output"))()
+const { info, error } = new (require("../sendToLog"))()
 
 module.exports = async function select(client, config) {
   const getRole = (await client.knex("getrole"))[0]
@@ -8,10 +8,10 @@ module.exports = async function select(client, config) {
   gChannel.messages
     .fetch(gMessageID)
     .then(() => {
-      info("SUCCESS", "Confirmed the role message.")
+      info("SUCCESS", "역할 선택 메시지를 찾았습니다.")
     })
     .catch(() => {
-      error("No role message found.")
+      error("역할 선택 메시지를 찾을 수 없습니다.")
       gChannel.bulkDelete(100)
       const selects = new Discord.MessageActionRow().addComponents(
         new Discord.MessageSelectMenu()
@@ -27,7 +27,7 @@ module.exports = async function select(client, config) {
           .setLabel("프로그래밍 역할 제거하기")
           .setStyle("DANGER")
       )
-      info("CREATE", "The role message is being generated.")
+      info("CREATE", "역할 선택 메시지가 재성성 되었습니다.")
       gChannel
         .send({
           content: "역할을 선택하시고 싶으시다면 아래 메뉴를 확인해주세요!",

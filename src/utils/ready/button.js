@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const { info, error } = new (require("../output"))()
+const { info, error } = new (require("../sendToLog"))()
 
 module.exports = async function button(client) {
   const authentication = (await client.knex("authentication"))[0]
@@ -8,10 +8,10 @@ module.exports = async function button(client) {
   channel.messages
     .fetch(messageID)
     .then(() => {
-      info("SUCCESS", "Confirmed the authentication message.")
+      info("SUCCESS", "인증 메시지를 찾았습니다.")
     })
     .catch(() => {
-      error("No authentication message found.")
+      error("인증 메시지를 찾을 수 없습니다.")
       channel.bulkDelete(100)
       const buttons = new Discord.MessageActionRow().addComponents(
         new Discord.MessageButton()
@@ -20,10 +20,10 @@ module.exports = async function button(client) {
           .setEmoji("✅")
           .setStyle("PRIMARY")
       )
-      info("CREATE", "The authentication message is being generated.")
+      info("CREATE", "인증 메시지가 재생성 되었습니다")
       channel
         .send({
-          content: "인증하실려면 아래 버튼을 눌러주세요.",
+          content: "인증하실려면 아래 버튼을 눌러주세요!",
           components: [buttons],
         })
         .then(async (msg) => {

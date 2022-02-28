@@ -1,13 +1,13 @@
-const Event = require("../../structures/Event")
+const Event = require("../structures/Event")
 const Discord = require("discord.js")
-const { error, info } = new (require("../../utils/output"))()
+const { error, info } = new (require("../utils/sendToLog"))()
 
 module.exports = class extends Event {
   async run(message) {
     const authentication = (await this.client.knex("authentication"))[0]
     if (message.id === authentication.messageID) {
       const channel = message.client.channels.cache.get(authentication.channel)
-      error("The authentication message has been removed.")
+      error("인증 메시지가 제거되었습니다.")
       channel.bulkDelete(100)
       const buttons = new Discord.MessageActionRow().addComponents(
         new Discord.MessageButton()
@@ -16,7 +16,7 @@ module.exports = class extends Event {
           .setEmoji("✅")
           .setStyle("PRIMARY")
       )
-      info("CREATE", "The authentication message is being generated.")
+      info("CREATE", "인증 메시지가 재생성 되었습니다.")
       channel
         .send({
           content: "인증하실려면 아래 버튼을 눌러주세요.",

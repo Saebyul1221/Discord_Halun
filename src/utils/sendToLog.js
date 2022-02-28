@@ -2,7 +2,7 @@ const config = require("../../config.json")
 const colors = require("colors")
 colors.setTheme(config.colors)
 
-module.exports = class Output {
+module.exports = class sendToLog {
   info(head, body) {
     console.log(`[${head}]`.info, `${body}`)
   }

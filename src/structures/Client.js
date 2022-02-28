@@ -1,6 +1,6 @@
 const { Client, Collection, Intents } = require("discord.js")
 const Util = require("./Util.js")
-const { error } = new (require("../utils/output"))()
+const { error } = new (require("../utils/sendToLog"))()
 const config = require("../../config.json")
 const knex = require("knex")(config.database)
 const AllOfIntents = new Intents()

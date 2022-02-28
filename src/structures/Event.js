@@ -1,4 +1,4 @@
-const { error } = new (require("../utils/output"))()
+const { error } = new (require("../utils/sendToLog"))()
 const config = require("../../config.json")
 
 module.exports = class Event {
