@@ -17,7 +17,7 @@ module.exports = class extends Command {
   async run(message, [command]) {
     const embed = new MessageEmbed()
       .setColor("BLUE")
-      .setAuthor({ text: "하룬의 도움말 메뉴!", iconURL: message.guild.iconURL({ dynamic: true }) })
+      .setAuthor({ name: "하룬의 도움말 메뉴!", iconURL: message.guild.iconURL({ dynamic: true }) })
       .setThumbnail(this.client.user.displayAvatarURL())
       .setFooter({
         text: message.author.username,
