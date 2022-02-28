@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "start": "babel-node ./src/index.js",
-    "test": "babel-node test.js"
+    "start": "node ./src/index.js"
   },
   "repository": {
     "type": "git",
