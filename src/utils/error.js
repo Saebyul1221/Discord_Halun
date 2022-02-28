@@ -2,9 +2,8 @@ let message = undefined
 const sendToLog = new (require("./sendToLog"))()
 
 process.on("uncaughtException", (error) => {
-  const embed = require("../utils/api/errorEmbed")(message)
-  console.log(message)
   if (!message) return console.error(error)
+  const embed = require("../utils/api/errorEmbed")(message)
   switch (error.message) {
     case "Not Owner":
       embed.setDescription("해당 명령어는 오너만 사용할 수 있어요!")
