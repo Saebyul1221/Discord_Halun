@@ -1,6 +1,6 @@
 const Event = require("../structures/Event")
 const handling = require("../utils/error")
-const { MessageEmbed } = require("discord.js")
+const { MessageEmbed, Message } = require("discord.js")
 
 module.exports = class extends Event {
   async run(message) {
@@ -12,9 +12,6 @@ module.exports = class extends Event {
       message.channel.send(`제 접두사는 \`${this.client.prefix}\` 이에요!`)
 
     const prefix = this.client.prefix
-
-    if (!message.content.startsWith(prefix)) return
-
     const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g)
 
     const command =
@@ -22,6 +19,14 @@ module.exports = class extends Event {
       this.client.commands.get(this.client.aliases.get(cmd.toLowerCase()))
 
     const embed = require("../utils/api/embed")(message)
+    const customCmd = message.content.split(" ")[0] || undefined
+    if (customCmd && !message.content.startsWith(prefix)) {
+      const data = await this.client.knex("customcmd").where({ cmd: customCmd })
+      if (data.length > 0) {
+        const randomValue = Math.floor(Math.random() * data.length)
+        message.channel.send({ content: data[randomValue].value })
+      }
+    }
 
     if (command) {
       const isDevOnly = command?.devOnly
