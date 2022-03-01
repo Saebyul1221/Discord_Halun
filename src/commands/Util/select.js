@@ -7,7 +7,7 @@ module.exports = class extends Command {
       aliases: ["골라", "골라봐"],
       description: "주어진 파라미터 중 하나를 랜덤하게 선택해요.",
       category: "유틸리티",
-      fullCommand: "하룬아 골라줘 < 1번 > [] 2번 ] [ 3번 ] [ 4번 ]...",
+      fullCommand: "하룬아 골라줘 < 1번 > [ 2번 ] [ 3번 ] [ 4번 ]...",
     })
   }
 
