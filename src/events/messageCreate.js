@@ -14,6 +14,7 @@ module.exports = class extends Event {
     const prefix = this.client.prefix
     const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g)
 
+    if (!message.content.startsWith(prefix)) return
     const command =
       this.client.commands.get(cmd.toLowerCase()) ||
       this.client.commands.get(this.client.aliases.get(cmd.toLowerCase()))
